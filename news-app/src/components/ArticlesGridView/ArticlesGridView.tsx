@@ -23,8 +23,6 @@ export const ArticlesGridView = ({ category }: ArticlesGridViewProps) => {
     const offset = (page - 1) * sizePerPage;
     const limit = Math.min(page * sizePerPage, size);
     const dispatch = useAppDispatch();
-
-    console.log(category);
     useEffect(() => {
         const lowerCaseCategory = category.toLowerCase();
         dispatch(getAll(lowerCaseCategory));

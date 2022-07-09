@@ -1,6 +1,6 @@
 import { Grid, Pagination } from '@mui/material';
 import { useSearchParams } from 'react-router-dom';
-import { useAppSelector, useAppDispatch } from '../../../../app/hooks';
+import { useAppSelector } from '../../../../app/hooks';
 
 export const GridPagination = () => {
     const { pages } = useAppSelector(state => state.article);

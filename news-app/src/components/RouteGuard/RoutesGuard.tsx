@@ -1,5 +1,4 @@
-import { ReactNode, useEffect, useState } from "react"
-import { Navigate, Outlet, RouteProps } from "react-router-dom"
+import { Navigate, Outlet } from "react-router-dom"
 
 type RoutesGuardProps = {
     guard: boolean,

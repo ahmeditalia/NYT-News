@@ -1,4 +1,4 @@
-import { Box, Card, CardContent, CardMedia, Container, Grid, Typography } from "@mui/material"
+import { Card, CardContent, CardMedia, Container, Grid, Typography } from "@mui/material"
 import { useEffect } from "react";
 import { useParams } from "react-router-dom"
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
@@ -13,8 +13,6 @@ export const ArticleView = ({ category }: ArticleViewProps) => {
     const { title } = useParams();
     const article = useAppSelector(state => state.article.articles.find((article) => article.title == title));
     const dispatch = useAppDispatch();
-    console.log(article);
-    console.log(title);
 
     useEffect(() => {
         if (!article) {

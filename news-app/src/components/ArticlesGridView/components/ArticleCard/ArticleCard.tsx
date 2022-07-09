@@ -1,6 +1,5 @@
 import { Typography, Card, CardActionArea, CardContent, CardMedia } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { useAppSelector } from "../../../../app/hooks";
 import { articleType } from "../../../../features/categoryArticle/article.types";
 
 type ArticleCardProps = {
@@ -8,8 +7,6 @@ type ArticleCardProps = {
 }
 
 export const ArticleCard = ({ article}: ArticleCardProps) => {
-
-    const api_key = useAppSelector(state => state.article.api_key);
     const navigate = useNavigate();
     return (
 

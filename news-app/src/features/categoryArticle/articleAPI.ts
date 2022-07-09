@@ -3,18 +3,20 @@ import axios from "axios";
 import { modify } from "./article.types";
 
 
-export const getAll = createAsyncThunk("article/get", async (category: string) => {
-    const api = `/topstories/v2/${category}.json`;
-    return axios.get(api)
-        .then(res => res.data)
-
-})
 
 
 type serachProps = {
     search: string,
     page: number
 }
+
+
+export const getAll = createAsyncThunk("article/get", async (category: string) => {
+    const api = `/topstories/v2/${category}.json`;
+    return axios.get(api)
+        .then(res => res.data)
+
+})
 
 
 export const searchArticles = createAsyncThunk("article/search", async ({search, page}: serachProps)=>{

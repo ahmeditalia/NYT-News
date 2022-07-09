@@ -1,6 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { stringify } from "querystring";
-import { json } from "stream/consumers";
 import { articleType } from "./article.types";
 import { getAll, getByTitle, searchArticles } from "./articleAPI";
 
@@ -53,7 +51,6 @@ const articleSlice = createSlice({
             state.size = results.length;
             state.pages = Math.ceil(results.length/state.sizePerPage);
             state.articles = results;
-            console.log(action.payload);
         })
 
         builder.addCase(getAll.rejected, (state, action) => {
@@ -66,8 +63,7 @@ const articleSlice = createSlice({
         })
 
         builder.addCase(searchArticles.fulfilled, (state, action) => {
-            console.log("fullfiled");
-            console.log(action.payload);
+
             state.pending = false;
             state.error = "";
             state.size = action.payload.meta.hits;
@@ -86,8 +82,6 @@ const articleSlice = createSlice({
         })
 
         builder.addCase(getByTitle.fulfilled, (state, action) => {
-            console.log("fullfiled");
-            console.log(action.payload);
             state.pending = false;
             state.error = "";
             state.size = action.payload.meta.hits;

@@ -1,5 +1,5 @@
 import SearchIcon from '@mui/icons-material/Search';
-import { Autocomplete, Box, InputAdornment, TextField, TextFieldProps } from '@mui/material';
+import { Autocomplete, InputAdornment } from '@mui/material';
 import { useState } from 'react';
 import { createSearchParams, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
@@ -63,5 +63,3 @@ export const SearchBar = () => {
 
     )
 }
-
-// renderInput={(props) => <StyledInputBase {...props} placeholder="Search…" inputProps={{ 'aria-label': 'search' }} />}

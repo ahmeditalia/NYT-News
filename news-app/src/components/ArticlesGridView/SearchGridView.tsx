@@ -16,12 +16,11 @@ export const SearchGridView = () => {
 
     const articles: articleType[] = useAppSelector(state => state.article.articles);
     const dispatch = useAppDispatch();
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams] = useSearchParams();
 
     useEffect(() => {
         const search = searchParams.get("search");
         const page = (Number(searchParams.get("page")) || 1) - 1;
-        console.log(searchParams.get("search"));
         dispatch(searchArticles({
             search: search || "",
             page: page

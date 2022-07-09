@@ -3,7 +3,6 @@ import { logIn, register } from "../../features/user/userApi";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import {EmailTextField} from "./components/EmailTextField";
 import {PasswordTextField} from "./components/PasswordTextField";
-import { useNavigate } from "react-router-dom";
 
 export type userType = {
     email: string,
