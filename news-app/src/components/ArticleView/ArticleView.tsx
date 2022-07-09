@@ -2,7 +2,7 @@ import { Box, Card, CardContent, CardMedia, Container, Grid, Typography } from "
 import { useEffect } from "react";
 import { useParams } from "react-router-dom"
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { getAll } from "../../features/categoryArticle/articleAPI";
+import { getAll, getByTitle } from "../../features/categoryArticle/articleAPI";
 
 type ArticleViewProps = {
     category?: string
@@ -14,6 +14,7 @@ export const ArticleView = ({ category }: ArticleViewProps) => {
     const article = useAppSelector(state => state.article.articles.find((article) => article.title == title));
     const dispatch = useAppDispatch();
     console.log(article);
+    console.log(title);
 
     useEffect(() => {
         if (!article) {
@@ -21,7 +22,7 @@ export const ArticleView = ({ category }: ArticleViewProps) => {
                 const lowerCaseCategory = category?.toLowerCase();
                 dispatch(getAll(lowerCaseCategory));
             }else{
-
+                dispatch(getByTitle(title))
             }
             
         }

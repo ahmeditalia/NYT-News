@@ -20,7 +20,7 @@ export const SearchGridView = () => {
 
     useEffect(() => {
         const search = searchParams.get("search");
-        const page = Number(searchParams.get("page")) -1;
+        const page = (Number(searchParams.get("page")) || 1) - 1;
         console.log(searchParams.get("search"));
         dispatch(searchArticles({
             search: search || "",

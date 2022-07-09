@@ -18,7 +18,7 @@ export const GridPagination = () => {
                 sx={{ display: "flex", justifyContent: "center" }}
                 color='primary'
                 count={pages}
-                size={'large'}
+                size={'medium'}
                 page={page}
                 onChange={handleChange} />
         </Grid>
