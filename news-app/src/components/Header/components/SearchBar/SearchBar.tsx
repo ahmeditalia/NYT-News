@@ -1,10 +1,11 @@
+import { Padding } from '@mui/icons-material';
 import SearchIcon from '@mui/icons-material/Search';
-import { Autocomplete, InputAdornment } from '@mui/material';
+import { Autocomplete, Box, InputAdornment, TextField } from '@mui/material';
 import { useState } from 'react';
 import { createSearchParams, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
 import { articleActions } from '../../../../features/categoryArticle/articleSlice';
-import { Search, StyledInputBase } from './SearchBar.styles';
+import { autoCompleteStyle, inputPropsStyle } from './SearchBar.styles';
 
 
 export const SearchBar = () => {
@@ -19,7 +20,7 @@ export const SearchBar = () => {
 
     const handleKeyPress = (event: React.KeyboardEvent<HTMLDivElement>) => {
         if (event.key == 'Enter') {
-            const params = { search: search};
+            const params = { search: search };
             dispatch(articleActions.addSearch(search));
             navigate({
                 pathname: "/search",
@@ -29,37 +30,36 @@ export const SearchBar = () => {
     }
 
     return (
-        <Search>
-            <Autocomplete
-                value={search}
-                onKeyDown={(event) => handleKeyPress(event)}
-                onChange={(event, value) => handleOnChange(event, value)}
-                onInputChange={(event, value) => handleOnChange(event, value)}
-                inputValue={search}
-                sx={{ width: { xs: "100%", md: "20ch" } }}
-                freeSolo
-                id="free-solo-2-demo"
-                disableClearable
-                options={history.slice(0, 5)}
+        <Autocomplete
+            value={search}
+            onKeyDown={(event) => handleKeyPress(event)}
+            onChange={(event, value) => handleOnChange(event, value)}
+            onInputChange={(event, value) => handleOnChange(event, value)}
+            inputValue={search}
+            freeSolo
+            id="free-solo-2-demo"
+            disableClearable
+            sx={autoCompleteStyle}
+            options={history.slice(0, 5)}
+            renderInput={(params) => (
+                <TextField
+                    {...params}
 
-                renderInput={(params) => (
-                    <StyledInputBase
-                        {...params}
+                    InputProps={{
+                        ...params.InputProps,
+                        type: 'search',
+                        color: "secondary",
+                        style: inputPropsStyle,
+                        startAdornment: (
+                            <InputAdornment position="start">
+                                <SearchIcon />
+                            </InputAdornment>
+                        ),
+                    }}
+                />
+            )}
+        />
 
-                        InputProps={{
-                            ...params.InputProps,
-                            type: 'search',
-                            color: "secondary",
-                            startAdornment: (
-                                <InputAdornment position="start">
-                                    <SearchIcon />
-                                </InputAdornment>
-                            ),
-                        }}
-                    />
-                )}
-            />
-        </Search>
 
     )
 }

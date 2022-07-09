@@ -1,3 +1,4 @@
+import { Grid, Stack } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import { Outlet } from 'react-router-dom';
@@ -12,15 +13,20 @@ import { appBarStyle } from './Header.styles';
 export const Header = () => {
     return (
         <>
-            <AppBar position="sticky" sx={appBarStyle}>
-                <Toolbar>
-                    <MobileMenu />
-                    <CategoryMenu />
+            <AppBar position="sticky">
+                <Stack flexDirection={"row"} justifyContent={{md: "space-between"}}>
+                    <Toolbar>
+                        <MobileMenu />
+                        <CategoryMenu />
+                    </Toolbar>
                     <SearchBar />
-                </Toolbar>
-                <Toolbar>
-                    <AccountMenu />
-                </Toolbar>
+
+
+                    <Toolbar>
+                        <AccountMenu />
+                    </Toolbar>
+                </Stack>
+
             </AppBar>
             <Outlet />
         </>
