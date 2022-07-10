@@ -28,7 +28,7 @@
     "@types/react-dom": "^18.0.6"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "set PORT=3000 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --watch",
     "eject": "react-scripts eject"
