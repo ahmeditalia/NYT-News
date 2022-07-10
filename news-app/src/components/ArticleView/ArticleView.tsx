@@ -28,13 +28,13 @@ export const ArticleView = ({ category }: ArticleViewProps) => {
 
     return (
         <Container >
-            <Grid paddingY={10} container spacing={4}>
+            <Grid paddingY={{xs: 5 , md:10}} container spacing={4}>
                 <Grid item>
                     <Typography align="left" variant="subtitle1" color={"darkgray"}> {article?.byline}  </Typography>
                     <Typography align="left" variant="subtitle2" color={"green"}> {article?.published_date} </Typography>
                 </Grid>
                 <Grid item>
-                    <Typography gutterBottom align="center" variant="h2" component={"h1"} fontWeight={"bold"}> {article?.title} </Typography>
+                    <Typography gutterBottom align="center" variant={"h2"} fontSize={{xs: 40, md: 70}} component={"h1"} fontWeight={"bold"}> {article?.title} </Typography>
                 </Grid>
                 <Grid item>
                     {

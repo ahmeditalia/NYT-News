@@ -12,19 +12,31 @@ export const SearchBar = () => {
     const [search, setSearch] = useState("");
     const navigate = useNavigate();
     const history = useAppSelector(state => state.article.history);
+    const dispatch = useAppDispatch();
+
+    const fnSearch = (value: string)=>{
+        const params = { search: value };
+        dispatch(articleActions.addSearch(value));
+        navigate({
+            pathname: "/search",
+            search: `?${createSearchParams(params)}`,
+        });
+    }
+
+    const handleInputChange = (event: any, value: string)=>{
+        setSearch(value);
+
+    }
+
     const handleOnChange = (event: any, value: string) => {
         setSearch(value);
+        fnSearch(value);
     }
-    const dispatch = useAppDispatch();
+
 
     const handleKeyPress = (event: React.KeyboardEvent<HTMLDivElement>) => {
         if (event.key == 'Enter') {
-            const params = { search: search };
-            dispatch(articleActions.addSearch(search));
-            navigate({
-                pathname: "/search",
-                search: `?${createSearchParams(params)}`,
-            });
+            fnSearch(search);
         }
     }
 
@@ -33,7 +45,7 @@ export const SearchBar = () => {
             value={search}
             onKeyDown={(event) => handleKeyPress(event)}
             onChange={(event, value) => handleOnChange(event, value)}
-            onInputChange={(event, value) => handleOnChange(event, value)}
+            onInputChange={(event, value) => handleInputChange(event, value)}
             inputValue={search}
             freeSolo
             id="free-solo-2-demo"
