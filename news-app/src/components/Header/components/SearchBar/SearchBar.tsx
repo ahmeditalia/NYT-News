@@ -1,10 +1,9 @@
-import { Padding } from '@mui/icons-material';
 import SearchIcon from '@mui/icons-material/Search';
-import { Autocomplete, Box, InputAdornment, TextField } from '@mui/material';
+import { Autocomplete, InputAdornment, TextField } from '@mui/material';
 import { useState } from 'react';
 import { createSearchParams, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
-import { articleActions } from '../../../../features/categoryArticle/articleSlice';
+import { articleActions } from '../../../../features/article/articleSlice';
 import { autoCompleteStyle, inputPropsStyle } from './SearchBar.styles';
 
 

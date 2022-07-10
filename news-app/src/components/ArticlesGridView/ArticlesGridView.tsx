@@ -2,9 +2,9 @@ import { Alert, Box, CircularProgress, Grid, Typography, } from "@mui/material";
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { getAll } from "../../features/categoryArticle/articleAPI";
-import { ArticleCard } from "./components/ArticleCard";
-import { GridPagination } from "./components/GridPagination";
+import { getAll } from "../../features/article/articleAPI";
+import { ArticleCard } from "../../shared/components/ArticleCard";
+import { GridPagination } from "../../shared/components/GridPagination";
 
 type ArticlesGridViewProps = {
     category: string
@@ -18,7 +18,7 @@ export const ArticlesGridView = ({ category }: ArticlesGridViewProps) => {
         sizePerPage,
         size
     } = useAppSelector(state => state.article);
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams] = useSearchParams();
     const page = Number(searchParams.get("page")) || 1;
     const offset = (page - 1) * sizePerPage;
     const limit = Math.min(page * sizePerPage, size);

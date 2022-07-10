@@ -1,3 +1,4 @@
+import { dateFormat } from "../../shared/utils"
 
 
 
@@ -24,7 +25,11 @@ export type articleType = {
 }
 
 
+
+
+
 export const modify = (articles: any[] )=>{
+
     return articles.map( article => {
         return {
             title: article.headline.main,
@@ -40,7 +45,7 @@ export const modify = (articles: any[] )=>{
                     caption: media.caption,
                 }
             }),
-            published_date: article.pub_date,
+            published_date: dateFormat(article.pub_date),
             section: article.section_name,
             abstract: article.abstract,
             url: article.web_url

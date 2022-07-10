@@ -1,8 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { userType } from "../../components/LogIn/LogIn";
-import { public_axios } from "../axios/axiosConfig";
+import { public_axios } from "../../shared/axios/axiosConfig";
 
-const server = {
+export const server = {
     REGISTER_URL: "auth/register",
     LOGIN_URL: "auth/login"
 }

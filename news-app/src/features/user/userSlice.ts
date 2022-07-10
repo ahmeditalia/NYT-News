@@ -3,18 +3,16 @@ import { logIn, register } from "./userApi";
 
 
 type userStateProps = {
-    email: string,
-    password: string,
     token: boolean,
-    error: string
+    logInError: string,
+    regError: string
 }
 
 
 const initialState: userStateProps = {
-    email: "",
-    password: "",
     token:  localStorage.getItem("token")? true: false,
-    error: ""
+    logInError: "",
+    regError: ""
 }
 
 
@@ -22,18 +20,11 @@ const userSlice = createSlice({
     name: "user",
     initialState,
     reducers:{
-        setEmail: (state, action)=>{
-            state.email = action.payload;
-        },
-        setPassword: (state, action) => {
-            state.password = action.payload;
-        },
         logout: (state) =>{
             localStorage.removeItem("token");
-            state.email = "";
-            state.password = "";
             state.token = false;
-            state.error = "";
+            state.logInError = "";
+            state.regError = "";
         }
     },
     extraReducers: (builder) => {
@@ -41,21 +32,21 @@ const userSlice = createSlice({
         builder.addCase(logIn.fulfilled, (state, action)=>{
             localStorage.setItem("token", action.payload);
             state.token = true;
-            state.error = "";
+            state.logInError = "";
         });
 
         builder.addCase(logIn.rejected, (state, action)=>{
-            state.error = action.error.message || "failed to logIn";
+            state.logInError = action.error.message || "failed to logIn";
         });
 
         builder.addCase(register.fulfilled, (state, action)=>{
             localStorage.setItem("token", action.payload);
             state.token = true;
-            state.error = "";
+            state.regError = "";
         });
 
         builder.addCase(register.rejected, (state, action)=>{
-            state.error = action.error.message || "failed to logIn";
+            state.regError = action.error.message || "failed to register";
         });
 
 

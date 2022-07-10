@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { dateFormat } from "../../shared/utils";
 import { articleType } from "./article.types";
 import { getAll, getByTitle, searchArticles } from "./articleAPI";
 
@@ -6,7 +7,6 @@ import { getAll, getByTitle, searchArticles } from "./articleAPI";
 type initialStateProps = {
     articles: articleType[],
     size: number,
-    api_key: string,
     pages:number,
     sizePerPage: number,
     pending: boolean,
@@ -20,7 +20,6 @@ const inithistory: string = localStorage.getItem("history") || "[]";
 const initialState: initialStateProps = {
     articles: [],
     size: 0,
-    api_key: "XspS0oUUS0BncaaC8D0k1vzpVRTCvuD0",
     pages: 1,
     sizePerPage: 12,
     pending: false,
@@ -47,7 +46,12 @@ const articleSlice = createSlice({
         builder.addCase(getAll.fulfilled, (state, action) => {
             state.pending = false;
             state.error = "";
-            const results:articleType[] = action.payload.results.filter((article: articleType) => article.title.length > 0);
+            const results:articleType[] = action.payload.results.filter((article: articleType) => article.title.length > 0).map((article: articleType)=>{
+                return{
+                    ...article,
+                    published_date: dateFormat(article.published_date)
+                }
+            });
             state.size = results.length;
             state.pages = Math.ceil(results.length/state.sizePerPage);
             state.articles = results;

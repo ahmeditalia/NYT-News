@@ -2,12 +2,12 @@ import { Alert, Box, CircularProgress, Grid, Typography, } from "@mui/material";
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
-import { articleType } from "../../features/categoryArticle/article.types";
-import { searchArticles } from "../../features/categoryArticle/articleAPI";
-import { ArticleCard } from "./components/ArticleCard";
-import { GridPagination } from "./components/GridPagination";
+import { articleType } from "../../features/article/article.types";
+import { searchArticles } from "../../features/article/articleAPI";
+import { ArticleCard } from "../../shared/components/ArticleCard";
+import { GridPagination } from "../../shared/components/GridPagination";
 
-export const SearchGridView = () => {
+export const SearchPage = () => {
     const {
         pending,
         error,

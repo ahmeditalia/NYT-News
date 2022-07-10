@@ -2,7 +2,7 @@ import { Card, CardContent, CardMedia, Container, Grid, Typography } from "@mui/
 import { useEffect } from "react";
 import { useParams } from "react-router-dom"
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { getAll, getByTitle } from "../../features/categoryArticle/articleAPI";
+import { getAll, getByTitle } from "../../features/article/articleAPI";
 
 type ArticleViewProps = {
     category?: string
@@ -46,10 +46,11 @@ export const ArticleView = ({ category }: ArticleViewProps) => {
                                 alt={article?.multimedia[0].caption}
 
                             />
-                            <CardContent>
+                            {article?.multimedia[0].caption && <CardContent>
                                 {article?.multimedia[0].caption && <Typography align="left" gutterBottom variant="subtitle1" color={"darkgray"} fontStyle={"italic"}> {article?.multimedia[0].caption}  </Typography>}
                                 {article?.multimedia[0].copyright && <Typography align="right" variant="subtitle2" color={"green"}> {`copyright: ${article?.multimedia[0].copyright}`} </Typography>}
                             </CardContent>
+}
                         </Card>
                     }
                 </Grid>

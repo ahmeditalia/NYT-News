@@ -3,11 +3,12 @@ import { Route, Routes } from 'react-router-dom';
 import { useAppSelector } from './app/hooks';
 import { categories, category } from './categories';
 import { ArticlesGridView } from './components/ArticlesGridView';
-import { SearchGridView } from './components/ArticlesGridView/SearchGridView';
 import { ArticleView } from './components/ArticleView';
 import { Header } from './components/Header';
 import { LogIn } from './components/LogIn';
+import { Register } from './components/Register';
 import { RoutesGuard } from './components/RouteGuard';
+import { SearchPage } from './components/SearchPage.tsx';
 
 
 
@@ -29,13 +30,14 @@ function App() {
           )
               })
             }
-          <Route path='search' element={<SearchGridView />} />
+          <Route path='search' element={<SearchPage />} />
           <Route path={`search/:title`} element={<ArticleView />} />
         </Route>
 
       </Route>
-      <Route path='/authentication' element={<RoutesGuard guard={!token} alt={"/"} />} >
+      <Route path='authentication' element={<RoutesGuard guard={!token} alt={"/"} />} >
         <Route path='login' element={<LogIn />} />
+        <Route path='register' element={<Register />} />
       </Route>
       <Route path="*" element={<>page not found</>} />
     </Routes>

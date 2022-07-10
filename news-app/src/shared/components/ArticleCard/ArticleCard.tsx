@@ -1,6 +1,6 @@
 import { Typography, Card, CardActionArea, CardContent, CardMedia } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { articleType } from "../../../../features/categoryArticle/article.types";
+import { articleType } from "../../../features/article/article.types";
 
 type ArticleCardProps = {
     article: articleType
@@ -15,8 +15,8 @@ export const ArticleCard = ({ article}: ArticleCardProps) => {
                 <CardMedia
                     component="img"
                     height="240"
-                    image={article?.multimedia && article?.multimedia[1].url}
-                    alt={article?.multimedia && article?.multimedia[1].caption}
+                    image={article?.multimedia && article?.multimedia[0]?.url}
+                    alt={article?.multimedia && article?.multimedia[0]?.caption}
 
                 />
                 <CardContent sx={{ height: 200 }}>
