@@ -18,7 +18,6 @@ type userInfoType ={
 
 axios.defaults.baseURL = "https://api.nytimes.com/svc/";
 axios.interceptors.request.use(async (config) => {
-    debugger;
     let token = localStorage.getItem("token");
 
 
