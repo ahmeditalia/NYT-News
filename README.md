@@ -32,9 +32,9 @@ or you can sign up with new data.
 ## Implemented Featues
 
 ```
-login
-register new account
-search for articles in the search bar
-navigate between different categories
-view any articles shown in the grid
+- login
+- register new account
+- search for articles in the search bar
+- navigate between different categories
+- view any articles shown in the grid
 ```
